@@ -1,0 +1,43 @@
+
+def check_security_policy(policy):
+    required_elements = {
+        "Scope": ["scope", "applies to"],
+        "Roles and Responsibilities": [
+            "roles and responsibilities", "responsibilities"
+        ],
+        "Enforcement": ["enforcement", "disciplinary action"],
+        "Review Cycle": [
+            "review cycle", "review annually", "review every year"
+        ],
+        "Approval Authority": [
+            "approval authority", "approved by", "authorized by"
+        ]
+    }
+
+    policy = policy.lower()
+    missing = []
+
+    for element, keywords in required_elements.items():
+        if not any(word in policy for word in keywords):
+            missing.append(element)
+
+    if missing:
+        print("Missing Governance Elements:")
+        for element in missing:
+            print("-", element)
+    else:
+        print("All required governance elements are present.")
+
+
+print("Enter policy text (type END on a new line):")
+
+lines = []
+
+while True:
+    line = input()
+    if line.strip().upper() == "END":
+        break
+    lines.append(line)
+
+policy = " ".join(lines)
+check_security_policy(policy)
