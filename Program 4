@@ -1,0 +1,33 @@
+
+def xor_cipher(data, key):
+    result = bytearray()
+
+    for i, byte in enumerate(data):
+        result.append(byte ^ key[i % len(key)])
+
+    return bytes(result)
+
+
+message = input("Enter message: ")
+key = input("Enter shared key: ")
+
+if not key:
+    print("Key cannot be empty.")
+else:
+    original = message.encode("utf-8")
+    shared_key = key.encode("utf-8")
+
+    encrypted = xor_cipher(original, shared_key)
+
+    print("Captured data (hex):", encrypted.hex())
+
+    wrong_key = b"wrong"
+    wrong_decrypted = xor_cipher(encrypted, wrong_key)
+
+    print("Decrypted with wrong key:",
+          repr(wrong_decrypted.decode("utf-8", errors="replace")))
+
+    decrypted = xor_cipher(encrypted, shared_key)
+
+    print("Decrypted with correct key:",
+          decrypted.decode("utf-8"))
