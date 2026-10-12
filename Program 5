@@ -1,0 +1,38 @@
+
+def classify_report(description, audience):
+    text = (description + " " + audience).lower()
+
+    keywords = {
+        "Strategic": [
+            "business leaders", "executives", "risk trends",
+            "long-term", "business impact", "management"
+        ],
+        "Tactical": [
+            "security team", "attack techniques", "mitre",
+            "ttp", "adversary methods", "defensive strategy"
+        ],
+        "Operational": [
+            "soc analyst", "incident response", "ip address",
+            "malicious domain", "hash", "active attack",
+            "incident details", "ioc"
+        ]
+    }
+
+    scores = {}
+
+    for category, words in keywords.items():
+        scores[category] = sum(
+            1 for word in words if word in text
+        )
+
+    if max(scores.values()) == 0:
+        return "Unclassified"
+
+    return max(scores, key=scores.get)
+
+
+description = input("Enter report description: ")
+audience = input("Enter intended audience: ")
+
+print("Threat Intelligence Classification:",
+      classify_report(description, audience))
