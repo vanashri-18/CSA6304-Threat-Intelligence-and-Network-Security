@@ -1,0 +1,26 @@
+
+# Allowed network connections
+allowed_connections = {
+    ("Low-Trust", "Internet"),
+    ("Employee", "Application"),
+    ("Application", "Database")
+}
+
+def check_access(source, destination):
+    if (source, destination) in allowed_connections:
+        return "ACCESS ALLOWED"
+    else:
+        return "ACCESS DENIED"
+
+
+print("=== Network Segmentation Simulator ===")
+print("Segments: Low-Trust, Employee, Application, Database, Internet")
+
+source = input("Enter source segment: ")
+destination = input("Enter destination segment: ")
+
+result = check_access(source, destination)
+
+print("Source:", source)
+print("Destination:", destination)
+print("Result:", result)
