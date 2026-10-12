@@ -1,0 +1,47 @@
+
+# Sample raw logs
+raw_logs = [
+    "INFO User login successful",
+    "ERROR Failed login attempt",
+    "WARNING Suspicious network activity",
+    "ERROR Unauthorized access detected",
+    "INFO File accessed"
+]
+
+# Logstash-style parsing
+events = []
+
+for log in raw_logs:
+    parts = log.split(" ", 1)
+
+    event = {
+        "level": parts[0],
+        "message": parts[1]
+    }
+
+    events.append(event)
+
+# Elasticsearch-style indexing
+index = {}
+
+for i, event in enumerate(events):
+    index[i] = event
+
+# Kibana-style aggregation
+summary = {}
+
+for event in index.values():
+    level = event["level"]
+    summary[level] = summary.get(level, 0) + 1
+
+# Display indexed events
+print("=== Indexed Events ===")
+
+for event_id, event in index.items():
+    print(event_id, event)
+
+# Display summary
+print("\n=== Log Summary ===")
+
+for level, count in summary.items():
+    print(level, ":", count)
