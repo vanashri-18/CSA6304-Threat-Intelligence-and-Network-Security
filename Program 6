@@ -1,0 +1,47 @@
+
+from urllib.parse import urlparse
+import ipaddress
+
+def detect_phishing(url):
+    suspicious_words = [
+        "login", "verify", "secure", "update",
+        "account", "password", "banking"
+    ]
+
+    indicators = []
+
+    parsed = urlparse(
+        url if "://" in url else "//" + url
+    )
+    host = (parsed.hostname or "").lower()
+
+    if not host:
+        return ["Invalid URL or missing hostname"]
+
+    if any(word in url.lower() for word in suspicious_words):
+        indicators.append("Suspicious keyword detected")
+
+    try:
+        ipaddress.ip_address(host)
+        indicators.append("IP address used as domain")
+    except ValueError:
+        pass
+
+    if len(host.split(".")) > 4:
+        indicators.append("Excessive subdomains")
+
+    if "@" in parsed.netloc:
+        indicators.append("Contains @ symbol in authority")
+
+    return indicators
+
+
+url = input("Enter URL: ")
+results = detect_phishing(url)
+
+if results:
+    print("Warning: Suspicious URL indicators found:")
+    for item in results:
+        print("-", item)
+else:
+    print("No obvious phishing indicators found.")
