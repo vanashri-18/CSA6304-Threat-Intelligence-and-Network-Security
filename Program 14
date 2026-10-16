@@ -1,0 +1,17 @@
+events = [
+    "Firewall: Multiple connections",
+    "Authentication: 10 failed logins",
+    "Server: Successful login from the same IP"
+]
+
+print("Step 1: Raw events collected")
+normalized = [event.lower() for event in events]
+print("Step 2: Events normalized")
+
+if "failed logins" in normalized[1] and "successful login" in normalized[2]:
+    print("Step 3: Suspicious events correlated")
+    print("Alert: Possible Brute-Force Attack")
+    print("Severity: High")
+    print("Status: Alert Generated")
+else:
+    print("No suspicious activity detected")
