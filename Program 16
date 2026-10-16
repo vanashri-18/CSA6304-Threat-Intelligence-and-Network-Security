@@ -1,0 +1,24 @@
+layers = {
+    "Firewall": "Passed",
+    "IDS": "Detected",
+    "Antivirus": "Blocked",
+    "Access Control": "Not reached"
+}
+
+blocked = False
+
+for layer, status in layers.items():
+    if blocked:
+        print(layer + ": Not reached")
+    elif status == "Blocked":
+        print(layer + ": Attack blocked")
+        blocked = True
+    elif status == "Detected":
+        print(layer + ": Suspicious activity detected")
+    else:
+        print(layer + ": Attack passed")
+
+if blocked:
+    print("Final Result: Attack Prevented")
+else:
+    print("Final Result: Attack Passed Through All Layers")
