@@ -1,0 +1,8 @@
+context = input("Context (Yes/No): ").lower()
+confidence = int(input("Confidence: "))
+actionable = input("Actionable (Yes/No): ").lower()
+
+if context == "yes" and confidence >= 70 and actionable == "yes":
+    print("Classification: Qualified Threat Intelligence")
+else:
+    print("Classification: Raw or Incomplete Data")
