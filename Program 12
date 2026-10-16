@@ -1,0 +1,17 @@
+alert = input("Enter alert: ").lower()
+
+if "ransomware" in alert or "critical data breach" in alert:
+    priority = "P1"
+    severity = "Critical"
+elif "malware" in alert or "suspicious account" in alert:
+    priority = "P2"
+    severity = "High"
+elif "failed login" in alert or "unusual activity" in alert:
+    priority = "P3"
+    severity = "Medium"
+else:
+    priority = "P4"
+    severity = "Low"
+
+print("Priority:", priority)
+print("Severity:", severity)
