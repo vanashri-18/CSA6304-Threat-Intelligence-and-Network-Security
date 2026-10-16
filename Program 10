@@ -1,0 +1,13 @@
+connections = set()
+
+outbound = ("192.168.1.10", "8.8.8.8")
+connections.add(outbound)
+print("Outbound: ALLOWED")
+
+response = ("8.8.8.8", "192.168.1.10")
+if (response[1], response[0]) in connections:
+    print("Return traffic: ALLOWED")
+
+inbound = ("45.67.89.10", "192.168.1.10")
+if (inbound[1], inbound[0]) not in connections:
+    print("Unsolicited inbound: BLOCKED")
