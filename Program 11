@@ -1,0 +1,16 @@
+
+# Program 11: Packet Sniffing Simulation
+
+interface = input("Interface: ")
+count = int(input("Packet count: "))
+
+packets = [
+    "TCP packet: 192.168.1.10 -> 142.250.183.14",
+    "UDP packet: 192.168.1.12 -> 8.8.8.8",
+    "ICMP packet: 192.168.1.15 -> 192.168.1.1"
+]
+
+print("\nCaptured Packet Summaries:")
+
+for i in range(min(count, len(packets))):
+    print("Packet", i + 1, ":", packets[i])
