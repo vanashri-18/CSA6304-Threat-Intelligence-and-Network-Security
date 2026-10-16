@@ -1,0 +1,16 @@
+activity = input("Enter activity: ").lower()
+
+if "requirement" in activity or "goal" in activity:
+    print("Stage: Direction")
+elif "collect" in activity or "gather" in activity:
+    print("Stage: Collection")
+elif "clean" in activity or "format" in activity:
+    print("Stage: Processing")
+elif "analy" in activity or "examin" in activity:
+    print("Stage: Analysis")
+elif "shar" in activity or "distribut" in activity:
+    print("Stage: Dissemination")
+elif "feedback" in activity or "review" in activity:
+    print("Stage: Feedback")
+else:
+    print("Stage: Unknown")
