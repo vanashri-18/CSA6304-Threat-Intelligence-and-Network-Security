@@ -1,0 +1,16 @@
+incident = input("Enter incident: ").lower()
+
+if "fake email" in incident or "fake website" in incident:
+    cause = "Phishing"
+elif "unpatched" in incident:
+    cause = "Unpatched Vulnerability"
+elif "misconfiguration" in incident or "incorrect configuration" in incident:
+    cause = "Misconfiguration"
+elif "employee misuse" in incident or "insider" in incident:
+    cause = "Insider Threat"
+elif "vendor" in incident or "supply chain" in incident:
+    cause = "Supply-Chain Compromise"
+else:
+    cause = "Unknown"
+
+print("Root Cause:", cause)
