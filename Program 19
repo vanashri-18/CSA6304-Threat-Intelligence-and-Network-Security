@@ -1,0 +1,19 @@
+events = [
+    {"user": "admin", "event": "Failed login"},
+    {"user": "john", "event": "Successful login"},
+    {"user": "admin", "event": "Failed login"},
+    {"user": "admin", "event": "Failed login"},
+    {"user": "john", "event": "Failed login"}
+]
+keyword = input("Enter search keyword: ").lower()
+print("\nFiltered Events:")
+for event in events:
+    if keyword in event["event"].lower():
+        print(event["event"])
+print("\nStats Count by Event:")
+counts = {}
+for event in events:
+    event_type = event["event"]
+    counts[event_type] = counts.get(event_type, 0) + 1
+for event_type, count in counts.items():
+    print(f"{event_type}: {count}")
