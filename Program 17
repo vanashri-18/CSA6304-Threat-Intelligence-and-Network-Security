@@ -1,0 +1,12 @@
+description = input("Enter security control description: ").lower()
+
+if any(word in description for word in ["access control", "permission", "account"]):
+    print("Control Domain: Technological Controls")
+elif any(word in description for word in ["training", "awareness", "employee"]):
+    print("Control Domain: People Controls")
+elif any(word in description for word in ["network", "firewall", "encryption"]):
+    print("Control Domain: Technological Controls")
+elif any(word in description for word in ["physical security", "locked door", "cctv"]):
+    print("Control Domain: Physical Controls")
+else:
+    print("Control domain not identified")
