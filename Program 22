@@ -1,0 +1,25 @@
+logs = [
+    ("admin", "Failed"),
+    ("admin", "Failed"),
+    ("admin", "Failed"),
+    ("admin", "Success"),
+    ("john", "Failed")
+]
+username = input("Enter target username: ")
+threshold = 3
+failed_count = 0
+detected = False
+for user, status in logs:
+    if user == username:
+        if status == "Failed":
+            failed_count += 1
+        elif status == "Success":
+            if failed_count >= threshold:
+                detected = True
+                print("User:", username)
+                print("Failed Attempts:", failed_count)
+                print("Successful Login: Yes")
+                print("Alert: Brute-force pattern detected")
+            failed_count = 0
+if not detected:
+    print("No brute-force pattern detected")
