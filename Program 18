@@ -1,0 +1,26 @@
+import hashlib
+import os
+
+# Example database of known-malicious SHA-256 hashes
+malicious_hashes = {
+    "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+}
+
+file_path = input("Enter file path: ")
+
+if not os.path.isfile(file_path):
+    print("Error: File not found")
+else:
+    sha256 = hashlib.sha256()
+
+    with open(file_path, "rb") as file:
+        for chunk in iter(lambda: file.read(4096), b""):
+            sha256.update(chunk)
+
+    file_hash = sha256.hexdigest()
+    print("SHA-256:", file_hash)
+
+    if file_hash in malicious_hashes:
+        print("Status: Malware Detected")
+    else:
+        print("Status: No known-malicious hash match")
