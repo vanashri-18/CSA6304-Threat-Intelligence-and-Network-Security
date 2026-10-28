@@ -1,0 +1,15 @@
+attack_signatures = ["SQL Injection", "Port Scan", "Malware"]
+whitelist = ["192.168.1.10"]
+source_ip = input("Enter source IP: ")
+traffic = input("Enter traffic description: ").lower()
+if source_ip in whitelist:
+    print("Source is trusted")
+    print("Action: Traffic allowed")
+elif any(signature.lower() in traffic
+         for signature in attack_signatures):
+    print("Alert: Malicious traffic detected")
+    print("Action: Traffic blocked")
+else:
+    print("No attack signature matched")
+    print("Action: Traffic allowed")
+
