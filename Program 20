@@ -1,0 +1,15 @@
+description = input("Enter incident description: ").lower()
+keywords = {
+    "Phishing": ["fake email", "phishing", "steal password", "fraudulent email"],
+    "DoS/DDoS": ["ddos", "dos attack", "flooding", "overload server"],
+    "Malware": ["malware", "ransomware", "virus", "trojan"],
+    "Man-in-the-Middle": ["intercept", "man-in-the-middle", "mitm", "eavesdropping"]
+}
+detected = []
+for threat, words in keywords.items():
+    if any(word in description for word in words):
+        detected.append(threat)
+if detected:
+    print("Detected Threat:", ", ".join(detected))
+else:
+    print("Threat category not identified")
