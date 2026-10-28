@@ -1,0 +1,34 @@
+baseline = {
+    "Firewall": "Enabled",
+    "MFA": "Enabled",
+    "Antivirus": "Enabled",
+    "Password Length": 12
+}
+current = {
+    "Firewall": "Enabled",
+    "MFA": "Disabled",
+    "Antivirus": "Enabled",
+    "Password Length": 8
+}
+passed = 0
+failed = 0
+print("Security Control Compliance Report\n")
+for control, required in baseline.items():
+    actual = current[control]
+    if control == "Password Length":
+        if actual >= required:
+            print(f"{control}: PASSED")
+            passed += 1
+        else:
+            print(f"{control}: FAILED (Current: {actual}, Required: {required})")
+            failed += 1
+    else:
+        if actual == required:
+            print(f"{control}: PASSED")
+            passed += 1
+        else:
+            print(f"{control}: FAILED (Current: {actual}, Required: {required})")
+            failed += 1
+print("\nTotal Controls:", len(baseline))
+print("Passed:", passed)
+print("Failed:", failed)
