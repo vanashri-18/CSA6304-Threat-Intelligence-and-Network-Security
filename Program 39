@@ -1,0 +1,19 @@
+iocs = ["BAD.COM", "192.168.1.100"]
+
+logs = [
+    "Connection from bad.com",
+    "Connection from 10.0.0.5"
+]
+
+# Normalize IOCs
+iocs = [ioc.lower() for ioc in iocs]
+
+print("THREAT INTELLIGENCE ALERT\n")
+
+for log in logs:
+    log = log.lower()
+
+    for ioc in iocs:
+        if ioc in log:
+            print("Matched IOC:", ioc)
+            print("Suspicious activity detected!")
