@@ -1,0 +1,20 @@
+logs = [
+    "Failed login from 192.168.1.5",
+    "Malware detected from 10.0.0.8",
+    "Normal login from 192.168.1.2"
+]
+
+print("HYPOTHESIS-BASED HUNT:")
+for log in logs:
+    if "failed login" in log.lower():
+        print(log)
+
+print("\nINTELLIGENCE-BASED HUNT:")
+for log in logs:
+    if "10.0.0.8" in log:
+        print(log)
+
+print("\nANALYTICS-BASED HUNT:")
+for log in logs:
+    if "failed" in log.lower():
+        print(log)
