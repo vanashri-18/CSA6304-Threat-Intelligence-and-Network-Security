@@ -1,0 +1,17 @@
+incident = input("Enter incident type: ").lower()
+
+if incident == "ransomware":
+    strategy = "Isolate infected systems from the network."
+elif incident == "phishing":
+    strategy = "Block malicious emails and disable affected accounts."
+elif incident == "ddos":
+    strategy = "Apply traffic filtering and rate limiting."
+elif incident == "malware":
+    strategy = "Quarantine infected devices."
+elif incident == "data breach":
+    strategy = "Restrict compromised accounts and access."
+else:
+    strategy = "Investigate the incident and apply suitable controls."
+
+print("Recommended Containment Strategy:")
+print(strategy)
