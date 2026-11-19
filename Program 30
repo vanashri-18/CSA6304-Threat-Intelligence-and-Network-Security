@@ -1,0 +1,12 @@
+firewall = ["10.0.0.5"]
+windows = ["10.0.0.5"]
+vpn = ["10.0.0.5"]
+
+common = set(firewall) & set(windows) & set(vpn)
+
+if common:
+    print("SIEM ALERT!")
+    print("Possible Brute-Force Attack Detected.")
+    print("Suspicious IP:", common.pop())
+else:
+    print("No Brute-Force Attack Detected.")
