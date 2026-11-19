@@ -1,0 +1,18 @@
+action = input("Enter action: ").lower()
+
+if "train" in action or "plan" in action:
+    phase = "Preparation"
+elif "detect" in action or "identify" in action:
+    phase = "Identification"
+elif "isolate" in action or "block" in action:
+    phase = "Containment"
+elif "remove" in action or "delete" in action:
+    phase = "Eradication"
+elif "restore" in action or "recover" in action:
+    phase = "Recovery"
+elif "review" in action or "improve" in action:
+    phase = "Lessons Learned"
+else:
+    phase = "Unknown Phase"
+
+print("Incident Response Phase:", phase)
