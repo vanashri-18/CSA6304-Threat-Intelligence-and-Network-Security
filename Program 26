@@ -1,0 +1,25 @@
+import hashlib
+
+sample = "CreateRemoteThread VirtualAlloc"
+
+# Static Analysis
+hash_value = hashlib.sha256(sample.encode()).hexdigest()
+
+apis = ["CreateRemoteThread", "VirtualAlloc",
+        "WriteProcessMemory"]
+
+print("STATIC ANALYSIS")
+print("SHA-256:", hash_value)
+
+for api in apis:
+    if api in sample:
+        print("Suspicious API:", api)
+
+# Dynamic Analysis
+logs = ["File deletion detected", "Normal activity"]
+
+print("\nDYNAMIC ANALYSIS")
+
+for log in logs:
+    if "deletion" in log.lower():
+        print("Suspicious Behavior:", log)
