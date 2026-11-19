@@ -1,0 +1,9 @@
+protocol = "TCP"
+port = 80
+content = "MALWARE"
+
+if protocol == "TCP" and port == 80 and "MALWARE" in content:
+    print("ALERT: Intrusion Detected!")
+    print("Matching protocol, port and content.")
+else:
+    print("No Intrusion Detected.")
