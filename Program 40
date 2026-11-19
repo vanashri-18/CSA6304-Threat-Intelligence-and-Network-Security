@@ -1,0 +1,18 @@
+task = input("Enter security task: ").lower()
+
+if "network" in task or "vulnerability" in task:
+    tool = "Nessus"
+elif "packet" in task or "network traffic" in task:
+    tool = "Wireshark"
+elif "penetration" in task or "web testing" in task:
+    tool = "Burp Suite"
+elif "log" in task or "monitoring" in task:
+    tool = "Splunk"
+elif "malware" in task:
+    tool = "VirusTotal"
+elif "password" in task:
+    tool = "John the Ripper"
+else:
+    tool = "No matching tool found"
+
+print("Recommended Security Tool:", tool)
