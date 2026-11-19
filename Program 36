@@ -1,0 +1,14 @@
+data = input("Enter system description: ").lower()
+
+if "credit card" in data or "payment" in data:
+    standard = "PCI-DSS"
+elif "patient" in data or "medical" in data:
+    standard = "HIPAA"
+elif "personal data" in data or "privacy" in data:
+    standard = "GDPR"
+elif "financial report" in data or "accounting" in data:
+    standard = "SOX"
+else:
+    standard = "No matching standard found"
+
+print("Applicable Standard:", standard)
