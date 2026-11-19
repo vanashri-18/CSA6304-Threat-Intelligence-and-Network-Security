@@ -1,0 +1,17 @@
+rules = [
+    ("TCP", 80, "ALLOW"),
+    ("TCP", 80, "DENY"),
+    ("UDP", 53, "ALLOW")
+]
+
+protocol = input("Enter protocol: ").upper()
+port = int(input("Enter port: "))
+
+decision = "DENY"
+
+for p, pt, action in rules:
+    if protocol == p and port == pt:
+        decision = action
+        break
+
+print("Packet", "Allowed" if decision == "ALLOW" else "Denied")
