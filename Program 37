@@ -1,0 +1,11 @@
+baseline = 9
+
+events = [9, 2, 9]
+
+print("Continuous Security Monitoring\n")
+
+for time in events:
+    if time == baseline:
+        print("Login at", time, "AM - Normal")
+    else:
+        print("Login at", time, "AM - ANOMALY DETECTED")
