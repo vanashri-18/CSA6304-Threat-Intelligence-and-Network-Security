@@ -1,0 +1,16 @@
+likelihood = int(input("Enter likelihood (1-5): "))
+impact = int(input("Enter impact (1-5): "))
+
+score = likelihood * impact
+
+if score <= 4:
+    level = "Low"
+elif score <= 9:
+    level = "Medium"
+elif score <= 16:
+    level = "High"
+else:
+    level = "Critical"
+
+print("Risk Score:", score)
+print("Risk Level:", level)
