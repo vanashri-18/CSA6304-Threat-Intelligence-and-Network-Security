@@ -1,0 +1,21 @@
+roles = {
+    "Employee": {"Read", "Write"},
+    "Admin": {"Read", "Write", "Delete"}
+}
+
+users = {
+    "Arun": ("Employee", {"Read", "Write", "Delete"}),
+    "Ravi": ("Admin", {"Read", "Write"})
+}
+
+for user, data in users.items():
+    role, permissions = data
+    excess = permissions - roles[role]
+
+    print("\nUser:", user)
+
+    if excess:
+        print("Excess Permissions:", excess)
+        print("Status: Excess Access Detected")
+    else:
+        print("Status: Access Appropriate")
